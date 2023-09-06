@@ -13,13 +13,18 @@ const moduloDeJuego = (() => {
             ["X", "O", "X"]
             ]
         };
+
+        return Gameboard.board;
     })();
     
     const displayController = (function () {
 
     })(); 
 
-    return {crearJugadores, gameBoard};
+    return {crearJugadores, moduloGameBoard};
 })();
 
 
+const tablero = document.getElementById("tablero");
+
+tablero.textContent = moduloDeJuego.moduloGameBoard;
