@@ -70,21 +70,22 @@ const moduloDeJuego = (() => {
         const _o = document.getElementById("o");
 
         // Eleccion de simbolo por defecto para el primer jugador
-        let jugador1 = {nombre: _nombre_jugador.value, simbolo: "X"};
+        crearJugadores(_nombre_jugador.value, "X");
 
         _x.addEventListener("click", () => {
-            jugador1 = {nombre: _nombre_jugador.value, simbolo: _x.value};
+            crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: _x.value};
         });
 
         _o.addEventListener("click", () => {
-            jugador1 = {nombre: _nombre_jugador.value, simbolo: _o.value};
+            crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: _o.value};
         });
 
         const comenzarContraComputadora = (() => {
             jugarIA.addEventListener("click", (e) => {
-                primerJugador.textContent = jugador1.nombre + "   " + jugador1.simbolo;
-                const simboloIA = jugador1.simbolo === "O" ? "X": "O";
+                primerJugador.textContent = crearJugadores[0].nombre + "   " + crearJugadores[0].simbolo;
+                const simboloIA = crearJugadores[0].simbolo === "O" ? "X": "O";
                 segundoJugador.textContent = "IA" + "   " + simboloIA; 
+                crearJugadores("IA", simboloIA);
                 e.preventDefault();
                 elecciones.close();
             });
