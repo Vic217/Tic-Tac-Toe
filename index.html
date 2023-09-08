@@ -9,16 +9,37 @@
 </head>
 <body>
     <h1>Tic-Tac-Toe</h1>
-    <div id="tablero">
-        <div id="0"></div>
-        <div id="1"></div>
-        <div id="2"></div>
-        <div id="3"></div>
-        <div id="4"></div>
-        <div id="5"></div>
-        <div id="6"></div>
-        <div id="7"></div>
-        <div id="8"></div>
+    <dialog id="elecciones">
+        <form action="" method="" id="formulario">
+            <h3>Jugador</h3>
+
+            <label for="crear-jugador">Escribe nombre del jugador:</label>
+            <input type="text" id="crear-jugador" class="jugador">
+
+            <legend id="elegir-letra">Elige:</legend>
+            <input type="button" id="x" value="X">
+            <input type="button" id="o" value="O">
+        </form>
+
+        <p>Recuerda que comienza el jugador con la letra X.</p>
+
+        <button id="jugarIA">Jugar contra IA</button>
+        <button id="nuevo-jugador">Agregar contrincario</button>
+    </dialog>
+    <div id="espacio_de_juego">
+        <div id="primer_jugador"></div>
+        <div id="tablero">
+            <div id="0" class="caja"></div>
+            <div id="1" class="caja"></div>
+            <div id="2" class="caja"></div>
+            <div id="3" class="caja"></div>
+            <div id="4" class="caja"></div>
+            <div id="5" class="caja"></div>
+            <div id="6" class="caja"></div>
+            <div id="7" class="caja"></div>
+            <div id="8" class="caja"></div>
+        </div>
+        <div id="segundo_jugador"></div>
     </div>
     <footer id="contenedor-footer">
         <p> Copyright © 2023 </p>
