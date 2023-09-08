@@ -1,66 +1,85 @@
+// Variables de Tablero.
+const caja0 = document.getElementById("0");
+const caja1 = document.getElementById("1");
+const caja2 = document.getElementById("2");
+const caja3 = document.getElementById("3");
+const caja4 = document.getElementById("4");
+const caja5 = document.getElementById("5");
+const caja6 = document.getElementById("6");
+const caja7 = document.getElementById("7");
+const caja8 = document.getElementById("8");
+
 // Crea modulo de juego con fábrica de jugadores, un módulo de tablero y control de juego. 
 const moduloDeJuego = (() => {
-    let jugadorNuevo = {};
-    const crearJugadores = (function (nombre, simbolo) {
-        return jugadorNuevo = {nombre, simbolo}
-    });
+    const crearJugadores = (nombre, simbolo) => {
+        return { nombre, simbolo, }
+    };
 
     const moduloGameBoard = (() => {
-        const _Gameboard =[
-            ["X", "O", "X"],
-            ["O", "X", "O"],
-            ["X", "O", "X"]
-            ];
-        
-        // Variables de Tablero.
-        const _caja0 = document.getElementById("0");
-        const _caja1 = document.getElementById("1");
-        const _caja2 = document.getElementById("2");
-        const _caja3 = document.getElementById("3");
-        const _caja4 = document.getElementById("4");
-        const _caja5 = document.getElementById("5");
-        const _caja6 = document.getElementById("6");
-        const _caja7 = document.getElementById("7");
-        const _caja8 = document.getElementById("8");
-        
+        const _Gameboard = [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
+        ];
+
         const _getGameBoard = () => {
-            for(let i = 0; i < 3; i++){
-                for(let j = 0; j < 3; j++){
-                    if(i == 0 && j == 0){
-                        _caja0.textContent = _Gameboard[i][j];
-                    }else if (i == 0 && j == 1){
-                        _caja1.textContent = _Gameboard[i][j];
-                    }else if (i == 0 && j == 2){
-                        _caja2.textContent = _Gameboard[i][j];
-                    }else if (i == 1 && j == 0){
-                        _caja3.textContent = _Gameboard[i][j];
-                    }else if (i == 1 && j == 1){
-                        _caja4.textContent = _Gameboard[i][j];
-                    }else if (i == 1 && j == 2){
-                        _caja5.textContent = _Gameboard[i][j];
-                    }else if (i == 2 && j == 0){
-                        _caja6.textContent = _Gameboard[i][j];
-                    }else if (i == 2 && j == 1){
-                        _caja7.textContent = _Gameboard[i][j];
-                    }else if (i == 2 && j == 2){
-                        _caja8.textContent = _Gameboard[i][j];
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (i == 0 && j == 0) {
+                        caja0.textContent = _Gameboard[i][j];
+                    } else if (i == 0 && j == 1) {
+                        caja1.textContent = _Gameboard[i][j];
+                    } else if (i == 0 && j == 2) {
+                        caja2.textContent = _Gameboard[i][j];
+                    } else if (i == 1 && j == 0) {
+                        caja3.textContent = _Gameboard[i][j];
+                    } else if (i == 1 && j == 1) {
+                        caja4.textContent = _Gameboard[i][j];
+                    } else if (i == 1 && j == 2) {
+                        caja5.textContent = _Gameboard[i][j];
+                    } else if (i == 2 && j == 0) {
+                        caja6.textContent = _Gameboard[i][j];
+                    } else if (i == 2 && j == 1) {
+                        caja7.textContent = _Gameboard[i][j];
+                    } else if (i == 2 && j == 2) {
+                        caja8.textContent = _Gameboard[i][j];
                     }
                 }
             }
         };
 
-        const showBoard = () => { 
+        const showBoard = () => {
             _getGameBoard();
         };
 
-        return {showBoard};
+        return { showBoard };
     })();
-    
-    const displayController = (function () {
 
-    })(); 
+    const mostrarFormulario = () => {
+        elecciones.showModal();
 
-    return {crearJugadores, moduloGameBoard};
+        // Formulario
+        const _nombre_jugador = document.getElementById("crear-jugador");
+        const _x = document.getElementById("x");
+        const _o = document.getElementById("o");
+
+        // Eleccion por defecto para el primer jugador
+        let elegir_letra = "X";
+
+        _x.addEventListener("click", () => {
+            elegir_letra = _x.value;
+        });
+
+        _o.addEventListener("click", () => {
+            elegir_letra = _o.value;
+        });
+    };
+
+    const displayController = (jugador1, jugador2) => {
+    };
+
+    return { crearJugadores, moduloGameBoard, mostrarFormulario, displayController };
 })();
 
-moduloDeJuego.moduloGameBoard.showBoard();
+const obtenerFormulario = moduloDeJuego.mostrarFormulario();
+const nuevoTablero = moduloDeJuego.moduloGameBoard.showBoard();
