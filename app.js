@@ -9,6 +9,12 @@ const caja6 = document.getElementById("6");
 const caja7 = document.getElementById("7");
 const caja8 = document.getElementById("8");
 
+// Eleccion de jugadores
+const elecciones = document.getElementById("elecciones");
+let primerJugador = document.getElementById("primer_jugador");
+let segundoJugador = document.getElementById("segundo_jugador");
+const jugarIA = document.getElementById("jugarIA");
+
 // Crea modulo de juego con fábrica de jugadores, un módulo de tablero y control de juego. 
 const moduloDeJuego = (() => {
     const crearJugadores = (nombre, simbolo) => {
@@ -63,15 +69,15 @@ const moduloDeJuego = (() => {
         const _x = document.getElementById("x");
         const _o = document.getElementById("o");
 
-        // Eleccion por defecto para el primer jugador
-        let elegir_letra = "X";
+        // Eleccion de simbolo por defecto para el primer jugador
+        primerJugador = {nombre: _nombre_jugador.value, simbolo: "X"};
 
         _x.addEventListener("click", () => {
-            elegir_letra = _x.value;
+            primerJugador = {simbolo: _x.value};
         });
 
         _o.addEventListener("click", () => {
-            elegir_letra = _o.value;
+            primerJugador = {simbolo: _o.value};
         });
     };
 
