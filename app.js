@@ -70,15 +70,27 @@ const moduloDeJuego = (() => {
         const _o = document.getElementById("o");
 
         // Eleccion de simbolo por defecto para el primer jugador
-        primerJugador = {nombre: _nombre_jugador.value, simbolo: "X"};
+        let jugador1 = {nombre: _nombre_jugador.value, simbolo: "X"};
 
         _x.addEventListener("click", () => {
-            primerJugador = {simbolo: _x.value};
+            jugador1 = {nombre: _nombre_jugador.value, simbolo: _x.value};
         });
 
         _o.addEventListener("click", () => {
-            primerJugador = {simbolo: _o.value};
+            jugador1 = {nombre: _nombre_jugador.value, simbolo: _o.value};
         });
+
+        const comenzarContraComputadora = (() => {
+            jugarIA.addEventListener("click", (e) => {
+                primerJugador.textContent = jugador1.nombre + "   " + jugador1.simbolo;
+                const simboloIA = jugador1.simbolo === "O" ? "X": "O";
+                segundoJugador.textContent = "IA" + "   " + simboloIA; 
+                e.preventDefault();
+                elecciones.close();
+            });
+        })();
+
+        return {comenzarContraComputadora};
     };
 
     const displayController = (jugador1, jugador2) => {
@@ -87,5 +99,6 @@ const moduloDeJuego = (() => {
     return { crearJugadores, moduloGameBoard, mostrarFormulario, displayController };
 })();
 
-const obtenerFormulario = moduloDeJuego.mostrarFormulario();
+
 const nuevoTablero = moduloDeJuego.moduloGameBoard.showBoard();
+const obtenerFormulario = moduloDeJuego.mostrarFormulario();
