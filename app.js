@@ -23,9 +23,9 @@ const moduloDeJuego = (() => {
 
     const moduloGameBoard = (() => {
         const _Gameboard = [
-            ["", "", ""],
-            ["", "", ""],
-            ["", "", ""]
+            ["0", "1", "2"],
+            ["3", "4", "5"],
+            ["6", "7", "8"]
         ];
 
         const _getGameBoard = () => {
@@ -70,7 +70,7 @@ const moduloDeJuego = (() => {
         const _o = document.getElementById("o");
 
         // Eleccion de simbolo por defecto para el primer jugador
-        crearJugadores(_nombre_jugador.value, "X");
+        crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: "X"};
 
         _x.addEventListener("click", () => {
             crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: _x.value};
@@ -85,7 +85,7 @@ const moduloDeJuego = (() => {
                 primerJugador.textContent = crearJugadores[0].nombre + "   " + crearJugadores[0].simbolo;
                 const simboloIA = crearJugadores[0].simbolo === "O" ? "X": "O";
                 segundoJugador.textContent = "IA" + "   " + simboloIA; 
-                crearJugadores("IA", simboloIA);
+                crearJugadores[1] = {nombre: "IA", simbolo: simboloIA};
                 e.preventDefault();
                 elecciones.close();
             });
