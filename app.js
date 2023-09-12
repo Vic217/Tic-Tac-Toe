@@ -23,9 +23,9 @@ const moduloDeJuego = (() => {
 
     const moduloGameBoard = (() => {
         const _Gameboard = [
-            ["0", "1", "2"],
-            ["3", "4", "5"],
-            ["6", "7", "8"]
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
         ];
 
         const _getGameBoard = () => {
@@ -61,45 +61,128 @@ const moduloDeJuego = (() => {
         return { showBoard };
     })();
 
-    const mostrarFormulario = () => {
-        elecciones.showModal();
 
-        // Formulario
-        const _nombre_jugador = document.getElementById("crear-jugador");
-        const _x = document.getElementById("x");
-        const _o = document.getElementById("o");
-
-        // Eleccion de simbolo por defecto para el primer jugador
-        crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: "X"};
-
-        _x.addEventListener("click", () => {
-            crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: _x.value};
-        });
-
-        _o.addEventListener("click", () => {
-            crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: _o.value};
-        });
-
-        const comenzarContraComputadora = (() => {
-            jugarIA.addEventListener("click", (e) => {
-                primerJugador.textContent = crearJugadores[0].nombre + "   " + crearJugadores[0].simbolo;
-                const simboloIA = crearJugadores[0].simbolo === "O" ? "X": "O";
-                segundoJugador.textContent = "IA" + "   " + simboloIA; 
-                crearJugadores[1] = {nombre: "IA", simbolo: simboloIA};
-                e.preventDefault();
-                elecciones.close();
+    const displayController = (() => {
+        const mostrarFormulario = () => {
+            elecciones.showModal();
+    
+            // Formulario
+            const _nombre_jugador = document.getElementById("crear-jugador");
+            const _x = document.getElementById("x");
+            const _o = document.getElementById("o");
+    
+            // Eleccion de simbolo por defecto para el primer jugador
+            crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: "X"};
+    
+            _x.addEventListener("click", () => {
+                crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: _x.value};
             });
-        })();
+    
+            _o.addEventListener("click", () => {
+                crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: _o.value};
+            });
+    
+            const comenzarContraComputadora = (() => {
+                jugarIA.addEventListener("click", (e) => {
+                    primerJugador.textContent = crearJugadores[0].nombre + "   " + crearJugadores[0].simbolo;
+                    const simboloIA = crearJugadores[0].simbolo === "O" ? "X": "O";
+                    segundoJugador.textContent = "IA" + "   " + simboloIA; 
+                    crearJugadores[1] = {nombre: "IA", simbolo: simboloIA};
+                    e.preventDefault();
+                    elecciones.close();
 
-        return {comenzarContraComputadora};
-    };
+                    let jugadorActual;
+                    if (jugadorActual === undefined){
+                        if(crearJugadores[0].simbolo === "O"){
+                            jugadorActual = crearJugadores[1].simbolo;
+                        }else{
+                            jugadorActual = crearJugadores[0].simbolo;
+                        }
+                    }
+                    
+                    caja0.addEventListener("click", () => {
+                        if(caja0.textContent === ""){
+                            caja0.textContent = jugadorActual;
+                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
+                        }
+                    });
+    
+                    caja1.addEventListener("click", () => {
+                        if(caja1.textContent === ""){
+                            caja1.textContent = jugadorActual;
+                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
+                        }
+                    });
 
-    const displayController = (jugador1, jugador2) => {
-    };
+                    caja2.addEventListener("click", () => {
+                        if(caja2.textContent === ""){
+                            caja2.textContent = jugadorActual;
+                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
+                        }
+                    });
+    
+                    caja3.addEventListener("click", () => {
+                        if(caja3.textContent === ""){
+                            caja3.textContent = jugadorActual;
+                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
+                        }
+                    });
 
-    return { crearJugadores, moduloGameBoard, mostrarFormulario, displayController };
+                    caja0.addEventListener("click", () => {
+                        if(caja0.textContent === ""){
+                            caja0.textContent = jugadorActual;
+                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
+                        }
+                    });
+    
+                    caja4.addEventListener("click", () => {
+                        if(caja4.textContent === ""){
+                            caja4.textContent = jugadorActual;
+                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
+                        }
+                    });
+
+                    caja5.addEventListener("click", () => {
+                        if(caja5.textContent === ""){
+                            caja5.textContent = jugadorActual;
+                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
+                        }
+                    });
+    
+                    caja6.addEventListener("click", () => {
+                        if(caja6.textContent === ""){
+                            caja6.textContent = jugadorActual;
+                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
+                        }
+                    });
+
+                    caja7.addEventListener("click", () => {
+                        if(caja7.textContent === ""){
+                            caja7.textContent = jugadorActual;
+                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
+                        }
+                    });
+    
+                    caja8.addEventListener("click", () => {
+                        if(caja8.textContent === ""){
+                            caja8.textContent = jugadorActual;
+                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
+                        }
+                    });
+                });
+                
+                return moduloGameBoard.showBoard;
+            })();
+    
+            return {comenzarContraComputadora};
+        };
+    
+        return  {mostrarFormulario};
+    })();
+
+    return { crearJugadores, moduloGameBoard, displayController };
 })();
 
 
 const nuevoTablero = moduloDeJuego.moduloGameBoard.showBoard();
-const obtenerFormulario = moduloDeJuego.mostrarFormulario();
+const jugar = moduloDeJuego.displayController.mostrarFormulario();
