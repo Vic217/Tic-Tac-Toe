@@ -99,10 +99,114 @@ const moduloDeJuego = (() => {
                             jugadorActual = crearJugadores[0].simbolo;
                         }
                     }
+
+                    function obtenerGanador(){
+                        const mostrarGanador = document.getElementById("mostrar_ganador");
+
+                        if (caja0.textContent === caja1.textContent && caja1.textContent === caja2.textContent && caja0.textContent !== ""){
+                            const ganador = () => {
+                                mostrarGanador.showModal();
+                                const gana = document.getElementById("ganador");
+                                if(jugadorActual === crearJugadores[0].simbolo){
+                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                } else{
+                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                }
+                            }
+                            return ganador();
+                        } else if (caja0.textContent === caja3.textContent && caja3.textContent === caja6.textContent && caja0.textContent !== ""){
+                            const ganador = () => {
+                                mostrarGanador.showModal();
+                                const gana = document.getElementById("ganador");
+                                if(jugadorActual === crearJugadores[0].simbolo){
+                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                } else{
+                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                }
+                            }
+                            return ganador();
+                        } else if (caja1.textContent === caja4.textContent && caja4.textContent === caja7.textContent && caja1.textContent !== ""){
+                            const ganador = () => {
+                                mostrarGanador.showModal();
+                                const gana = document.getElementById("ganador");
+                                if(jugadorActual === crearJugadores[0].simbolo){
+                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                } else{
+                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                }
+                            }
+                            return ganador();
+                        } else if (caja2.textContent === caja5.textContent && caja5.textContent === caja8.textContent && caja2.textContent !== ""){
+                            const ganador = () => {
+                                mostrarGanador.showModal();
+                                const gana = document.getElementById("ganador");
+                                if(jugadorActual === crearJugadores[0].simbolo){
+                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                } else{
+                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                }
+                            }
+                            return ganador();
+                        } else if (caja3.textContent === caja4.textContent && caja5.textContent === caja4.textContent && caja3.textContent !== ""){
+                            const ganador = () => {
+                                mostrarGanador.showModal();
+                                const gana = document.getElementById("ganador");
+                                if(jugadorActual === crearJugadores[0].simbolo){
+                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                } else{
+                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                }
+                            }
+                            return ganador();
+                        } else if (caja6.textContent === caja7.textContent && caja6.textContent === caja8.textContent && caja6.textContent !== ""){
+                            const ganador = () => {
+                                mostrarGanador.showModal();
+                                const gana = document.getElementById("ganador");
+                                if(jugadorActual === crearJugadores[0].simbolo){
+                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                } else{
+                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                }
+                            }
+                            return ganador();
+                        } else if (caja0.textContent === caja4.textContent && caja4.textContent === caja8.textContent && caja0.textContent !== ""){
+                            const ganador = () => {
+                                mostrarGanador.showModal();
+                                const gana = document.getElementById("ganador");
+                                if(jugadorActual === crearJugadores[0].simbolo){
+                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                } else{
+                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                }
+                            }
+                            return ganador();
+                        } else if (caja2.textContent === caja4.textContent && caja4.textContent === caja6.textContent && caja2.textContent !== ""){
+                            const ganador = () => {
+                                mostrarGanador.showModal();
+                                const gana = document.getElementById("ganador");
+                                if(jugadorActual === crearJugadores[0].simbolo){
+                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                } else{
+                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                }
+                            }
+                            return ganador();
+                        } else if ([caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.textContent !== "")){
+                            const empate = () => {
+                                mostrarGanador.showModal();
+                                const gana = document.getElementById("ganador");
+                                gana.textContent = "Ha sido un empate";
+                            }
+                            return empate();
+                        } else{
+                            return "El juego continúa";
+                        }
+                    }
                     
                     caja0.addEventListener("click", () => {
                         if(caja0.textContent === ""){
                             caja0.textContent = jugadorActual;
+                            obtenerGanador();
                             jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
                         }
                     });
@@ -110,6 +214,7 @@ const moduloDeJuego = (() => {
                     caja1.addEventListener("click", () => {
                         if(caja1.textContent === ""){
                             caja1.textContent = jugadorActual;
+                            obtenerGanador();
                             jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
                         }
                     });
@@ -117,6 +222,7 @@ const moduloDeJuego = (() => {
                     caja2.addEventListener("click", () => {
                         if(caja2.textContent === ""){
                             caja2.textContent = jugadorActual;
+                            obtenerGanador();
                             jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
                         }
                     });
@@ -124,13 +230,7 @@ const moduloDeJuego = (() => {
                     caja3.addEventListener("click", () => {
                         if(caja3.textContent === ""){
                             caja3.textContent = jugadorActual;
-                            jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
-                        }
-                    });
-
-                    caja0.addEventListener("click", () => {
-                        if(caja0.textContent === ""){
-                            caja0.textContent = jugadorActual;
+                            obtenerGanador();
                             jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
                         }
                     });
@@ -138,6 +238,7 @@ const moduloDeJuego = (() => {
                     caja4.addEventListener("click", () => {
                         if(caja4.textContent === ""){
                             caja4.textContent = jugadorActual;
+                            obtenerGanador();
                             jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
                         }
                     });
@@ -145,6 +246,7 @@ const moduloDeJuego = (() => {
                     caja5.addEventListener("click", () => {
                         if(caja5.textContent === ""){
                             caja5.textContent = jugadorActual;
+                            obtenerGanador();
                             jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
                         }
                     });
@@ -152,6 +254,7 @@ const moduloDeJuego = (() => {
                     caja6.addEventListener("click", () => {
                         if(caja6.textContent === ""){
                             caja6.textContent = jugadorActual;
+                            obtenerGanador();
                             jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
                         }
                     });
@@ -159,6 +262,7 @@ const moduloDeJuego = (() => {
                     caja7.addEventListener("click", () => {
                         if(caja7.textContent === ""){
                             caja7.textContent = jugadorActual;
+                            obtenerGanador();
                             jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
                         }
                     });
@@ -166,6 +270,7 @@ const moduloDeJuego = (() => {
                     caja8.addEventListener("click", () => {
                         if(caja8.textContent === ""){
                             caja8.textContent = jugadorActual;
+                            obtenerGanador();
                             jugadorActual === "X" ? jugadorActual = "O" : jugadorActual = "X";
                         }
                     });
