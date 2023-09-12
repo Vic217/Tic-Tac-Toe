@@ -71,9 +71,6 @@ const moduloDeJuego = (() => {
             const _x = document.getElementById("x");
             const _o = document.getElementById("o");
     
-            // Eleccion de simbolo por defecto para el primer jugador
-            crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: "X"};
-    
             _x.addEventListener("click", () => {
                 crearJugadores[0] = {nombre: _nombre_jugador.value, simbolo: _x.value};
             });
@@ -90,7 +87,7 @@ const moduloDeJuego = (() => {
                     crearJugadores[1] = {nombre: "IA", simbolo: simboloIA};
                     e.preventDefault();
                     elecciones.close();
-
+                    
                     let jugadorActual;
                     if (jugadorActual === undefined){
                         if(crearJugadores[0].simbolo === "O"){
@@ -108,9 +105,9 @@ const moduloDeJuego = (() => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
                                 if(jugadorActual === crearJugadores[0].simbolo){
-                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
                                 } else{
-                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
                                 }
                             }
                             return ganador();
@@ -119,9 +116,9 @@ const moduloDeJuego = (() => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
                                 if(jugadorActual === crearJugadores[0].simbolo){
-                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
                                 } else{
-                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
                                 }
                             }
                             return ganador();
@@ -130,9 +127,9 @@ const moduloDeJuego = (() => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
                                 if(jugadorActual === crearJugadores[0].simbolo){
-                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
                                 } else{
-                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
                                 }
                             }
                             return ganador();
@@ -141,9 +138,9 @@ const moduloDeJuego = (() => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
                                 if(jugadorActual === crearJugadores[0].simbolo){
-                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
                                 } else{
-                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
                                 }
                             }
                             return ganador();
@@ -152,9 +149,9 @@ const moduloDeJuego = (() => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
                                 if(jugadorActual === crearJugadores[0].simbolo){
-                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
                                 } else{
-                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
                                 }
                             }
                             return ganador();
@@ -163,9 +160,9 @@ const moduloDeJuego = (() => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
                                 if(jugadorActual === crearJugadores[0].simbolo){
-                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
                                 } else{
-                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
                                 }
                             }
                             return ganador();
@@ -174,9 +171,9 @@ const moduloDeJuego = (() => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
                                 if(jugadorActual === crearJugadores[0].simbolo){
-                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
                                 } else{
-                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
                                 }
                             }
                             return ganador();
@@ -185,9 +182,9 @@ const moduloDeJuego = (() => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
                                 if(jugadorActual === crearJugadores[0].simbolo){
-                                    gana.textContent = `Gana el jugador ${crearJugadores[0].nombre}`;
+                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
                                 } else{
-                                    gana.textContent = `Gana el jugador ${crearJugadores[1].nombre}`
+                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
                                 }
                             }
                             return ganador();
