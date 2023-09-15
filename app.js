@@ -97,7 +97,7 @@ const moduloDeJuego = (() => {
 
                     if (crearJugadores[0].simbolo === "X") {
                         eligeHumano();
-                    }else if(crearJugadores[1].simbolo === "X"){
+                    } else if (crearJugadores[1].simbolo === "X") {
                         eligeIA();
                     }
 
@@ -200,12 +200,12 @@ const moduloDeJuego = (() => {
                             }
                             return empate();
                         } else {
-                            return "El juego continúa";
+                            return;
                         }
                     }
 
                     function eligeHumano() {
-                        
+
                         caja0.addEventListener("click", () => {
                             if (caja0.textContent === "") {
                                 caja0.textContent = crearJugadores[0].simbolo;
@@ -232,7 +232,7 @@ const moduloDeJuego = (() => {
 
                         caja3.addEventListener("click", () => {
                             if (caja3.textContent === "") {
-                                caja3.textContent =crearJugadores[0].simbolo;
+                                caja3.textContent = crearJugadores[0].simbolo;
                                 obtenerGanador();
                                 eligeIA();
                             }
@@ -280,46 +280,81 @@ const moduloDeJuego = (() => {
 
                         return moduloGameBoard.showBoard;
                     }
-
                     function eligeIA() {
-                        if(hayGanador()){
-                            return;
-                        }
-                        
-                        let vacios = [caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].filter(posible => posible.textContent === "");
-                        if (vacios.length > 0) {
-                            // La IA elige una caja aleatoria de las disponibles.
-                            const indiceAleatorio = Math.floor(Math.random() * vacios.length);
-                            const cajaElegida = vacios[indiceAleatorio];
-                            
-                            cajaElegida.textContent = crearJugadores[1].simbolo;
-                            
-                            // Llama a la función para verificar si hay un ganador o si el juego continúa.
-                            obtenerGanador();
-                            eligeHumano();
+                        const tablero = [
+                            caja0.textContent, caja1.textContent, caja2.textContent,
+                            caja3.textContent, caja4.textContent, caja5.textContent,
+                            caja6.textContent, caja7.textContent, caja8.textContent
+                        ];
+                    
+                        // Función para verificar si alguien gana el juego
+                        function alguienGana(marcaActual) {
+                            if (
+                                (tablero[0] === tablero[1] && tablero[1] === tablero[2] && tablero[0] === marcaActual) ||
+                                (tablero[0] === tablero[3] && tablero[3] === tablero[6] && tablero[0] === marcaActual) ||
+                                (tablero[1] === tablero[4] && tablero[4] === tablero[7] && tablero[1] === marcaActual) ||
+                                (tablero[2] === tablero[5] && tablero[5] === tablero[8] && tablero[2] === marcaActual) ||
+                                (tablero[3] === tablero[4] && tablero[4] === tablero[5] && tablero[3] === marcaActual) ||
+                                (tablero[6] === tablero[7] && tablero[7] === tablero[8] && tablero[6] === marcaActual) ||
+                                (tablero[0] === tablero[4] && tablero[4] === tablero[8] && tablero[0] === marcaActual) ||
+                                (tablero[2] === tablero[4] && tablero[4] === tablero[6] && tablero[2] === marcaActual)
+                            ) {
+                                return true;
+                            } else {
+                                return false;
+                            }
                         }
                     
-                        return moduloGameBoard.showBoard;
+                        // Función para verificar si una casilla está vacía
+                        function casillaVacia(indice) {
+                            return tablero[indice] === "";
+                        }
+                    
+                        // Función para obtener el símbolo opuesto (IA vs. humano)
+                        function obtenerSimboloOpuesto(simbolo) {
+                            return simbolo === "X" ? "O" : "X";
+                        }
+                    
+                        // Buscar combinaciones ganadoras del humano y bloquearlas
+                        for (let i = 0; i < 9; i++) {
+                            if (casillaVacia(i)) {
+                                tablero[i] = crearJugadores[0].simbolo;
+                                if (alguienGana(crearJugadores[0].simbolo)) {
+                                    // Si el humano gana en esta casilla, bloquearla
+                                    const cajaElegida = document.getElementById(i.toString());
+                                    cajaElegida.textContent = crearJugadores[1].simbolo;
+                                    tablero[i] = crearJugadores[1].simbolo;
+                                    obtenerGanador();
+                                    return;
+                                }
+                                tablero[i] = ""; // Deshacer el movimiento
+                            }
+                        }
+                    
+                        // Si no se puede bloquear una combinación ganadora, elegir una casilla aleatoria
+                        let casillasVacias = [];
+                        for (let i = 0; i < 9; i++) {
+                            if (casillaVacia(i)) {
+                                casillasVacias.push(i);
+                            }
+                        }
+                    
+                        if (casillasVacias.length > 0) {
+                            const indiceAleatorio = Math.floor(Math.random() * casillasVacias.length);
+                            const cajaElegida = document.getElementById(casillasVacias[indiceAleatorio].toString());
+                            cajaElegida.textContent = crearJugadores[1].simbolo;
+                            tablero[casillasVacias[indiceAleatorio]] = crearJugadores[1].simbolo;
+                            obtenerGanador();
+                        }
                     }
+                                       
+                    
 
-                    function hayGanador() {
-                        return (
-                            caja0.textContent === caja1.textContent && caja1.textContent === caja2.textContent && caja0.textContent !== "" ||
-                            caja0.textContent === caja3.textContent && caja3.textContent === caja6.textContent && caja0.textContent !== "" ||
-                            caja1.textContent === caja4.textContent && caja4.textContent === caja7.textContent && caja1.textContent !== "" ||
-                            caja2.textContent === caja5.textContent && caja5.textContent === caja8.textContent && caja2.textContent !== "" ||
-                            caja3.textContent === caja4.textContent && caja4.textContent === caja5.textContent && caja3.textContent !== "" ||
-                            caja6.textContent === caja7.textContent && caja7.textContent === caja8.textContent && caja6.textContent !== "" ||
-                            caja0.textContent === caja4.textContent && caja4.textContent === caja8.textContent && caja0.textContent !== "" ||
-                            caja2.textContent === caja4.textContent && caja4.textContent === caja6.textContent && caja2.textContent !== "" ||
-                            [caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.textContent !== "")
-                        );
-                    }
+                    eligeHumano();
                 });
 
                 return moduloGameBoard.showBoard;
             })();
-
             return { comenzarContraComputadora };
         };
 
