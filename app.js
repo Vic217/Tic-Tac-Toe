@@ -87,6 +87,9 @@ const moduloDeJuego = (() => {
             });
 
             const comenzarContraComputadora = (() => {
+
+                let juegoTerminado = false;
+
                 jugarIA.addEventListener("click", (e) => {
                     primerJugador.textContent = crearJugadores[0].nombre + "   " + crearJugadores[0].simbolo;
                     const simboloIA = crearJugadores[0].simbolo === "O" ? "X" : "O";
@@ -103,8 +106,9 @@ const moduloDeJuego = (() => {
 
                     function obtenerGanador() {
                         const mostrarGanador = document.getElementById("mostrar_ganador");
-
+                        
                         if (caja0.textContent === caja1.textContent && caja1.textContent === caja2.textContent && caja0.textContent !== "") {
+                            juegoTerminado = true;
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -116,6 +120,7 @@ const moduloDeJuego = (() => {
                             }
                             return ganador();
                         } else if (caja0.textContent === caja3.textContent && caja3.textContent === caja6.textContent && caja0.textContent !== "") {
+                            juegoTerminado = true;
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -127,6 +132,7 @@ const moduloDeJuego = (() => {
                             }
                             return ganador();
                         } else if (caja1.textContent === caja4.textContent && caja4.textContent === caja7.textContent && caja1.textContent !== "") {
+                            juegoTerminado = true;
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -138,6 +144,7 @@ const moduloDeJuego = (() => {
                             }
                             return ganador();
                         } else if (caja2.textContent === caja5.textContent && caja5.textContent === caja8.textContent && caja2.textContent !== "") {
+                            juegoTerminado = true;
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -149,6 +156,7 @@ const moduloDeJuego = (() => {
                             }
                             return ganador();
                         } else if (caja3.textContent === caja4.textContent && caja5.textContent === caja4.textContent && caja3.textContent !== "") {
+                            juegoTerminado = true;
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -160,6 +168,7 @@ const moduloDeJuego = (() => {
                             }
                             return ganador();
                         } else if (caja6.textContent === caja7.textContent && caja6.textContent === caja8.textContent && caja6.textContent !== "") {
+                            juegoTerminado = true;
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -171,6 +180,7 @@ const moduloDeJuego = (() => {
                             }
                             return ganador();
                         } else if (caja0.textContent === caja4.textContent && caja4.textContent === caja8.textContent && caja0.textContent !== "") {
+                            juegoTerminado = true;
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -182,6 +192,7 @@ const moduloDeJuego = (() => {
                             }
                             return ganador();
                         } else if (caja2.textContent === caja4.textContent && caja4.textContent === caja6.textContent && caja2.textContent !== "") {
+                            juegoTerminado = true;
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -209,6 +220,7 @@ const moduloDeJuego = (() => {
                         caja0.addEventListener("click", () => {
                             if (caja0.textContent === "") {
                                 caja0.textContent = crearJugadores[0].simbolo;
+                                caja0.style.color = "rgb(252, 166, 6)";
                                 obtenerGanador();
                                 eligeIA();
                             }
@@ -217,6 +229,7 @@ const moduloDeJuego = (() => {
                         caja1.addEventListener("click", () => {
                             if (caja1.textContent === "") {
                                 caja1.textContent = crearJugadores[0].simbolo;
+                                caja1.style.color = "rgb(252, 166, 6)";
                                 obtenerGanador();
                                 eligeIA();
                             }
@@ -225,6 +238,7 @@ const moduloDeJuego = (() => {
                         caja2.addEventListener("click", () => {
                             if (caja2.textContent === "") {
                                 caja2.textContent = crearJugadores[0].simbolo;
+                                caja2.style.color = "rgb(252, 166, 6)";
                                 obtenerGanador();
                                 eligeIA();
                             }
@@ -233,6 +247,7 @@ const moduloDeJuego = (() => {
                         caja3.addEventListener("click", () => {
                             if (caja3.textContent === "") {
                                 caja3.textContent = crearJugadores[0].simbolo;
+                                caja3.style.color = "rgb(252, 166, 6)";
                                 obtenerGanador();
                                 eligeIA();
                             }
@@ -241,6 +256,7 @@ const moduloDeJuego = (() => {
                         caja4.addEventListener("click", () => {
                             if (caja4.textContent === "") {
                                 caja4.textContent = crearJugadores[0].simbolo;
+                                caja4.style.color = "rgb(252, 166, 6)";
                                 obtenerGanador();
                                 eligeIA();
                             }
@@ -249,6 +265,7 @@ const moduloDeJuego = (() => {
                         caja5.addEventListener("click", () => {
                             if (caja5.textContent === "") {
                                 caja5.textContent = crearJugadores[0].simbolo;
+                                caja5.style.color = "rgb(252, 166, 6)";
                                 obtenerGanador();
                                 eligeIA();
                             }
@@ -257,6 +274,7 @@ const moduloDeJuego = (() => {
                         caja6.addEventListener("click", () => {
                             if (caja6.textContent === "") {
                                 caja6.textContent = crearJugadores[0].simbolo;
+                                caja6.style.color = "rgb(252, 166, 6)";
                                 obtenerGanador();
                                 eligeIA();
                             }
@@ -265,6 +283,7 @@ const moduloDeJuego = (() => {
                         caja7.addEventListener("click", () => {
                             if (caja7.textContent === "") {
                                 caja7.textContent = crearJugadores[0].simbolo;
+                                caja7.style.color = "rgb(252, 166, 6)";
                                 obtenerGanador();
                                 eligeIA();
                             }
@@ -273,6 +292,7 @@ const moduloDeJuego = (() => {
                         caja8.addEventListener("click", () => {
                             if (caja8.textContent === "") {
                                 caja8.textContent = crearJugadores[0].simbolo;
+                                caja8.style.color = "rgb(252, 166, 6)";
                                 obtenerGanador();
                                 eligeIA();
                             }
@@ -280,13 +300,14 @@ const moduloDeJuego = (() => {
 
                         return moduloGameBoard.showBoard;
                     }
+
                     function eligeIA() {
                         const tablero = [
                             caja0.textContent, caja1.textContent, caja2.textContent,
                             caja3.textContent, caja4.textContent, caja5.textContent,
                             caja6.textContent, caja7.textContent, caja8.textContent
                         ];
-                    
+
                         // Función para verificar si alguien gana el juego
                         function alguienGana(marcaActual) {
                             if (
@@ -309,10 +330,9 @@ const moduloDeJuego = (() => {
                         function casillaVacia(indice) {
                             return tablero[indice] === "";
                         }
-                    
-                        // Función para obtener el símbolo opuesto (IA vs. humano)
-                        function obtenerSimboloOpuesto(simbolo) {
-                            return simbolo === "X" ? "O" : "X";
+                        
+                        if(juegoTerminado){
+                            return;
                         }
                     
                         // Buscar combinaciones ganadoras del humano y bloquearlas
@@ -323,6 +343,7 @@ const moduloDeJuego = (() => {
                                     // Si el humano gana en esta casilla, bloquearla
                                     const cajaElegida = document.getElementById(i.toString());
                                     cajaElegida.textContent = crearJugadores[1].simbolo;
+                                    cajaElegida.style.color = "#FFF3EB";
                                     tablero[i] = crearJugadores[1].simbolo;
                                     obtenerGanador();
                                     return;
@@ -343,13 +364,11 @@ const moduloDeJuego = (() => {
                             const indiceAleatorio = Math.floor(Math.random() * casillasVacias.length);
                             const cajaElegida = document.getElementById(casillasVacias[indiceAleatorio].toString());
                             cajaElegida.textContent = crearJugadores[1].simbolo;
-                            tablero[casillasVacias[indiceAleatorio]] = crearJugadores[1].simbolo;
+                            cajaElegida.style.color = "#FFF3EB";
                             obtenerGanador();
                         }
                     }
                                        
-                    
-
                     eligeHumano();
                 });
 
