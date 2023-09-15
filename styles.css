@@ -24,8 +24,51 @@ body {
 .caja {
     width: 100%;
     height: 100%;
-    border: 2px solid black;
     display: grid;
     justify-items: center;
     align-items: center;
+    font-family: 'Kalam';
+    font-size: 74px;
+    font-weight: 400;
+}
+
+#x, #o {
+    font-family: 'Kalam';
+    font-size: 20px;
+}
+
+.cero {
+    border-bottom: solid 2px black;
+    border-right: solid 2px black;
+} 
+
+.uno {
+    border-bottom: solid 2px black;
+    border-right: solid 2px black;
+}
+
+.dos {
+    border-bottom: solid 2px black;
+}
+
+.tres {
+    border-bottom: solid 2px black;
+    border-right: solid 2px black;
+} 
+
+.cuatro {
+    border-bottom: solid 2px black;
+    border-right: solid 2px black;
+}
+
+.cinco {
+    border-bottom: solid 2px black;
+}
+
+.seis {
+    border-right: solid 2px black;
+} 
+
+.siete {
+    border-right: solid 2px black;
 }
