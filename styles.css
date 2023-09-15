@@ -2,6 +2,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #293c50;
+}
+
+h1 {
+    margin-top: 10px;
+    font-size: 60px;
+    color: #49EA13;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #espacio_de_juego {
@@ -12,13 +20,16 @@ body {
 
 #tablero {
     height: 380px;
-    width: 530px;
+    min-height:  min-content;
+    width: 460px;
+    min-width: min-content;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
     cursor: pointer;
+    caret-color: transparent;
 }
 
 .caja {
@@ -32,43 +43,79 @@ body {
     font-weight: 400;
 }
 
+#primer_jugador {
+    color: rgb(252, 166, 6);
+    font-size: 22px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#segundo_jugador {
+    color: #FFF3EB;
+    font-size: 22px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
 #x, #o {
     font-family: 'Kalam';
-    font-size: 20px;
+    font-size: 36px;
 }
 
 .cero {
-    border-bottom: solid 2px black;
-    border-right: solid 2px black;
+    border-bottom: solid 4px #FF4636;
+    border-right: solid 4px #FF4636;
 } 
 
 .uno {
-    border-bottom: solid 2px black;
-    border-right: solid 2px black;
+    border-bottom: solid 4px #FF4636;
+    border-right: solid 4px #FF4636;
 }
 
 .dos {
-    border-bottom: solid 2px black;
+    border-bottom: solid 4px #FF4636;
 }
 
 .tres {
-    border-bottom: solid 2px black;
-    border-right: solid 2px black;
+    border-bottom: solid 4px #FF4636;
+    border-right: solid 4px #FF4636;
 } 
 
 .cuatro {
-    border-bottom: solid 2px black;
-    border-right: solid 2px black;
+    border-bottom: solid 4px #FF4636;
+    border-right: solid 4px #FF4636;
 }
 
 .cinco {
-    border-bottom: solid 2px black;
+    border-bottom: solid 4px #FF4636;
 }
 
 .seis {
-    border-right: solid 2px black;
+    border-right: solid 4px #FF4636;
 } 
 
 .siete {
-    border-right: solid 2px black;
+    border-right: solid 4px #FF4636;
+}
+
+footer {
+    margin-top: 30px;
+    display: flex;
+    color: #49EA13;
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+    color: #FC8D88;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    margin-left: 8px;
 }
