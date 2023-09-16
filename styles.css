@@ -68,32 +68,44 @@ h1 {
 .uno {
     border-bottom: solid 4px #FF4636;
     border-right: solid 4px #FF4636;
+    border-left: solid 4px #FF4636;
 }
 
 .dos {
     border-bottom: solid 4px #FF4636;
+    border-left: solid 4px #FF4636;
 }
 
 .tres {
+    border-top: solid 4px #FF4636;
     border-bottom: solid 4px #FF4636;
     border-right: solid 4px #FF4636;
 } 
 
 .cuatro {
-    border-bottom: solid 4px #FF4636;
-    border-right: solid 4px #FF4636;
+    border: solid 4px #FF4636;
 }
 
 .cinco {
+    border-top: solid 4px #FF4636;
     border-bottom: solid 4px #FF4636;
+    border-left: solid 4px #FF4636;
 }
 
 .seis {
     border-right: solid 4px #FF4636;
+    border-top: solid 4px #FF4636;
 } 
 
 .siete {
     border-right: solid 4px #FF4636;
+    border-left: solid 4px #FF4636;
+    border-top: solid 4px #FF4636;
+}
+
+.ocho {
+    border-left: solid 4px #FF4636;
+    border-top: solid 4px #FF4636;
 }
 
 footer {
@@ -105,7 +117,7 @@ footer {
 }
 
 a {
-    color: #FC8D88;
+    color: #ffa9a5;
     margin-left: 8px;
     display: flex;
     align-items: center;
@@ -114,6 +126,7 @@ a {
 
 a:hover {
     text-decoration: underline;
+    filter: drop-shadow(1px -2px 2px #FF4636);
 }
 
 img {
