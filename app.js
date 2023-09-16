@@ -109,6 +109,8 @@ const moduloDeJuego = (() => {
                         
                         if (caja0.textContent === caja1.textContent && caja1.textContent === caja2.textContent && caja0.textContent !== "") {
                             juegoTerminado = true;
+                            [caja0, caja1, caja2].every(caja => caja.style.backgroundColor = "#00ADAB");
+                            [caja0, caja1, caja2].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -121,6 +123,8 @@ const moduloDeJuego = (() => {
                             return ganador();
                         } else if (caja0.textContent === caja3.textContent && caja3.textContent === caja6.textContent && caja0.textContent !== "") {
                             juegoTerminado = true;
+                            [caja0, caja3, caja6].every(caja => caja.style.backgroundColor = "#00ADAB");
+                            [caja0, caja3, caja6].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -133,6 +137,8 @@ const moduloDeJuego = (() => {
                             return ganador();
                         } else if (caja1.textContent === caja4.textContent && caja4.textContent === caja7.textContent && caja1.textContent !== "") {
                             juegoTerminado = true;
+                            [caja1, caja4, caja7].every(caja => caja.style.backgroundColor = "#00ADAB");
+                            [caja1, caja4, caja7].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -145,6 +151,8 @@ const moduloDeJuego = (() => {
                             return ganador();
                         } else if (caja2.textContent === caja5.textContent && caja5.textContent === caja8.textContent && caja2.textContent !== "") {
                             juegoTerminado = true;
+                            [caja2, caja5, caja8].every(caja => caja.style.backgroundColor = "#00ADAB");
+                            [caja2, caja5, caja8].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -157,6 +165,8 @@ const moduloDeJuego = (() => {
                             return ganador();
                         } else if (caja3.textContent === caja4.textContent && caja5.textContent === caja4.textContent && caja3.textContent !== "") {
                             juegoTerminado = true;
+                            [caja3, caja4, caja5].every(caja => caja.style.backgroundColor = "#00ADAB");
+                            [caja3, caja4, caja5].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -169,6 +179,8 @@ const moduloDeJuego = (() => {
                             return ganador();
                         } else if (caja6.textContent === caja7.textContent && caja6.textContent === caja8.textContent && caja6.textContent !== "") {
                             juegoTerminado = true;
+                            [caja6, caja7, caja8].every(caja => caja.style.backgroundColor = "#00ADAB");
+                            [caja6, caja7, caja8].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -181,6 +193,8 @@ const moduloDeJuego = (() => {
                             return ganador();
                         } else if (caja0.textContent === caja4.textContent && caja4.textContent === caja8.textContent && caja0.textContent !== "") {
                             juegoTerminado = true;
+                            [caja0, caja4, caja8].every(caja => caja.style.backgroundColor = "#00ADAB");
+                            [caja0, caja4, caja8].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -193,6 +207,8 @@ const moduloDeJuego = (() => {
                             return ganador();
                         } else if (caja2.textContent === caja4.textContent && caja4.textContent === caja6.textContent && caja2.textContent !== "") {
                             juegoTerminado = true;
+                            [caja2, caja4, caja6].every(caja => caja.style.backgroundColor = "#00ADAB");
+                            [caja2, caja4, caja6].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
                             const ganador = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
@@ -204,6 +220,8 @@ const moduloDeJuego = (() => {
                             }
                             return ganador();
                         } else if ([caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.textContent !== "")) {
+                            [caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.style.backgroundColor = "#a3f111");
+                            [caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.style.boxShadow = "inset 5px 0px 148px 25px rgba(0,13,171,1)");
                             const empate = () => {
                                 mostrarGanador.showModal();
                                 const gana = document.getElementById("ganador");
