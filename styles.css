@@ -1,3 +1,4 @@
+/* Estilo de la ventana */
 body {
     display: flex;
     flex-direction: column;
@@ -5,6 +6,7 @@ body {
     background-color: #293c50;
 }
 
+/* Encabezados */
 h1 {
     margin-top: 10px;
     font-size: 60px;
@@ -12,15 +14,23 @@ h1 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+h3 {
+    font-size: 30px;
+    margin: 2px;
+}
+
+/* Espacio de juego */
 #espacio_de_juego {
     width: 100vw;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: baseline;
 }
 
 #tablero {
     height: 380px;
-    min-height:  min-content;
+    min-height: min-content;
     width: 460px;
     min-width: min-content;
     display: grid;
@@ -43,27 +53,10 @@ h1 {
     font-weight: 400;
 }
 
-#primer_jugador {
-    color: rgb(252, 166, 6);
-    font-size: 22px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-#segundo_jugador {
-    color: #FFF3EB;
-    font-size: 22px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-#x, #o {
-    font-family: 'Kalam';
-    font-size: 36px;
-}
-
 .cero {
     border-bottom: solid 4px #FF4636;
     border-right: solid 4px #FF4636;
-} 
+}
 
 .uno {
     border-bottom: solid 4px #FF4636;
@@ -80,7 +73,7 @@ h1 {
     border-top: solid 4px #FF4636;
     border-bottom: solid 4px #FF4636;
     border-right: solid 4px #FF4636;
-} 
+}
 
 .cuatro {
     border: solid 4px #FF4636;
@@ -95,7 +88,7 @@ h1 {
 .seis {
     border-right: solid 4px #FF4636;
     border-top: solid 4px #FF4636;
-} 
+}
 
 .siete {
     border-right: solid 4px #FF4636;
@@ -108,6 +101,106 @@ h1 {
     border-top: solid 4px #FF4636;
 }
 
+/* Estilo de jugadores en el juego */
+#primer_jugador {
+    color: rgb(252, 166, 6);
+    font-size: 22px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 40px;
+}
+
+#segundo_jugador {
+    color: #FFF3EB;
+    font-size: 22px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 40px;
+}
+
+
+/* Formulario */
+dialog {
+    border: solid 3px #FF4636;
+    background-color: #293c50;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #49EA13;
+    font-size: 20px;
+}
+
+#formulario {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+#crear-jugador {
+    border: 2px solid rgb(252, 166, 6);
+    border-radius: 5px;
+    background-color: #FFF3EB;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    transition: background-color 0.8s ease;
+    width: 175px;
+}
+
+#crear-jugador:focus {
+    outline: 2px solid rgb(252, 166, 6);
+    color: #fca606;
+    background-color: #000;
+}
+
+#x,
+#o {
+    font-family: 'Kalam';
+    font-size: 34px;
+    border: 2px solid rgb(252, 166, 6);
+    border-radius: 5px;
+    transition: background-color 0.9s ease;
+    height: 52px;
+    width: 40px;
+}
+
+#x:hover,
+#o:hover {
+    background-color: #000;
+    color: rgb(252, 166, 6);
+    cursor: pointer;
+}
+
+.activado {
+    background-color: #000;
+    color: #fca606;
+}
+
+legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#jugarIA {
+    margin-left: 30%;
+    margin-right: 30%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #FFF3EB;
+    font-size: 18px;
+    font-weight: 500;
+    border: 2px solid rgb(252, 166, 6);
+    border-radius: 10px;
+    transition: background-color 0.8s ease;
+}
+
+#jugarIA:hover {
+    color: rgb(252, 166, 6);
+    background-color: #000;
+    cursor: pointer;
+}
+
+/* Pie de página */
 footer {
     margin-top: 30px;
     display: flex;
@@ -131,4 +224,25 @@ a:hover {
 
 img {
     margin-left: 8px;
+}
+
+/* Dialogo de ganador */
+#mostrar_ganador {
+    text-align: center;
+}
+
+#reiniciar, #juego_nuevo {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #FFF3EB;
+    font-size: 18px;
+    font-weight: 500;
+    border: 2px solid rgb(252, 166, 6);
+    border-radius: 10px;
+    transition: background-color 0.8s ease;
+}
+
+#reiniciar:hover, #juego_nuevo:hover {
+    background-color: #000;
+    color: #fca606;   
+    cursor: pointer;
 }
