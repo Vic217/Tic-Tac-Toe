@@ -14,6 +14,9 @@ const elecciones = document.getElementById("elecciones");
 let primerJugador = document.getElementById("primer_jugador");
 let segundoJugador = document.getElementById("segundo_jugador");
 const jugarIA = document.getElementById("jugarIA");
+const reinicio = document.getElementById("reiniciar");
+const muestraGanador = document.getElementById("mostrar_ganador");
+const nuevoJuego = document.getElementById("juego_nuevo");
 
 // Crea modulo de juego con fábrica de jugadores, un módulo de tablero y control de juego. 
 const moduloDeJuego = (() => {
@@ -85,317 +88,350 @@ const moduloDeJuego = (() => {
             _o.addEventListener("click", () => {
                 crearJugadores[0] = { nombre: _nombre_jugador.value, simbolo: _o.value };
             });
+        }
 
-            const comenzarContraComputadora = (() => {
+        const comenzarContraComputadora = () => {
 
-                let juegoTerminado = false;
+            let juegoTerminado = false;
 
-                jugarIA.addEventListener("click", (e) => {
-                    primerJugador.textContent = crearJugadores[0].nombre + "   " + crearJugadores[0].simbolo;
-                    const simboloIA = crearJugadores[0].simbolo === "O" ? "X" : "O";
-                    segundoJugador.textContent = "IA" + "   " + simboloIA;
-                    crearJugadores[1] = { nombre: "IA", simbolo: simboloIA };
-                    e.preventDefault();
-                    elecciones.close();
+            nuevoJuego.addEventListener("click", (e) => {
+                [caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].map(caja => {
+                    caja.style.backgroundColor = "#293c50";
+                    caja.style.boxShadow = "none";
+                    caja.textContent = "";
+                });
 
-                    if (crearJugadores[0].simbolo === "X") {
-                        eligeHumano();
-                    } else if (crearJugadores[1].simbolo === "X") {
+                mostrarFormulario();
+                juegoTerminado = false;
+                e.preventDefault();
+                muestraGanador.close();
+            });
+
+            reinicio.addEventListener("click", (e) => {
+                moduloGameBoard.showBoard();
+
+                [caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].map(caja => {
+                    caja.style.backgroundColor = "#293c50";
+                    caja.style.boxShadow = "none";
+                    caja.textContent = "";
+                });
+
+                juegoTerminado = false;
+
+                if (crearJugadores[0].simbolo === "X") {
+                    eligeHumano();
+                } else if (crearJugadores[1].simbolo === "X") {
+                    eligeIA();
+                }
+
+                muestraGanador.close();
+                e.preventDefault();
+            });
+
+            jugarIA.addEventListener("click", (e) => {
+                primerJugador.textContent = crearJugadores[0].nombre + "   " + crearJugadores[0].simbolo;
+                const simboloIA = crearJugadores[0].simbolo === "O" ? "X" : "O";
+                segundoJugador.textContent = "IA" + "   " + simboloIA;
+                crearJugadores[1] = { nombre: "IA", simbolo: simboloIA };
+
+                if (crearJugadores[0].simbolo === "X") {
+                    eligeHumano();
+                } else if (crearJugadores[1].simbolo === "X") {
+                    eligeIA();
+                }
+
+                e.preventDefault();
+                elecciones.close();
+            });
+
+            function obtenerGanador() {
+                const mostrarGanador = document.getElementById("mostrar_ganador");
+
+                if (caja0.textContent === caja1.textContent && caja1.textContent === caja2.textContent && caja0.textContent !== "") {
+                    juegoTerminado = true;
+                    [caja0, caja1, caja2].every(caja => caja.style.backgroundColor = "#00ADAB");
+                    [caja0, caja1, caja2].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
+                    const ganador = () => {
+                        mostrarGanador.showModal();
+                        const gana = document.getElementById("ganador");
+                        if (caja0.textContent === crearJugadores[0].simbolo) {
+                            gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
+                        } else {
+                            gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
+                        }
+                    }
+                    return ganador();
+                } else if (caja0.textContent === caja3.textContent && caja3.textContent === caja6.textContent && caja0.textContent !== "") {
+                    juegoTerminado = true;
+                    [caja0, caja3, caja6].every(caja => caja.style.backgroundColor = "#00ADAB");
+                    [caja0, caja3, caja6].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
+                    const ganador = () => {
+                        mostrarGanador.showModal();
+                        const gana = document.getElementById("ganador");
+                        if (caja0.textContent === crearJugadores[0].simbolo) {
+                            gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
+                        } else {
+                            gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
+                        }
+                    }
+                    return ganador();
+                } else if (caja1.textContent === caja4.textContent && caja4.textContent === caja7.textContent && caja1.textContent !== "") {
+                    juegoTerminado = true;
+                    [caja1, caja4, caja7].every(caja => caja.style.backgroundColor = "#00ADAB");
+                    [caja1, caja4, caja7].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
+                    const ganador = () => {
+                        mostrarGanador.showModal();
+                        const gana = document.getElementById("ganador");
+                        if (caja1.textContent === crearJugadores[0].simbolo) {
+                            gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
+                        } else {
+                            gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
+                        }
+                    }
+                    return ganador();
+                } else if (caja2.textContent === caja5.textContent && caja5.textContent === caja8.textContent && caja2.textContent !== "") {
+                    juegoTerminado = true;
+                    [caja2, caja5, caja8].every(caja => caja.style.backgroundColor = "#00ADAB");
+                    [caja2, caja5, caja8].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
+                    const ganador = () => {
+                        mostrarGanador.showModal();
+                        const gana = document.getElementById("ganador");
+                        if (caja2.textContent === crearJugadores[0].simbolo) {
+                            gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
+                        } else {
+                            gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
+                        }
+                    }
+                    return ganador();
+                } else if (caja3.textContent === caja4.textContent && caja5.textContent === caja4.textContent && caja3.textContent !== "") {
+                    juegoTerminado = true;
+                    [caja3, caja4, caja5].every(caja => caja.style.backgroundColor = "#00ADAB");
+                    [caja3, caja4, caja5].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
+                    const ganador = () => {
+                        mostrarGanador.showModal();
+                        const gana = document.getElementById("ganador");
+                        if (caja3.textContent === crearJugadores[0].simbolo) {
+                            gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
+                        } else {
+                            gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
+                        }
+                    }
+                    return ganador();
+                } else if (caja6.textContent === caja7.textContent && caja6.textContent === caja8.textContent && caja6.textContent !== "") {
+                    juegoTerminado = true;
+                    [caja6, caja7, caja8].every(caja => caja.style.backgroundColor = "#00ADAB");
+                    [caja6, caja7, caja8].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
+                    const ganador = () => {
+                        mostrarGanador.showModal();
+                        const gana = document.getElementById("ganador");
+                        if (caja6.textContent === crearJugadores[0].simbolo) {
+                            gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
+                        } else {
+                            gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
+                        }
+                    }
+                    return ganador();
+                } else if (caja0.textContent === caja4.textContent && caja4.textContent === caja8.textContent && caja0.textContent !== "") {
+                    juegoTerminado = true;
+                    [caja0, caja4, caja8].every(caja => caja.style.backgroundColor = "#00ADAB");
+                    [caja0, caja4, caja8].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
+                    const ganador = () => {
+                        mostrarGanador.showModal();
+                        const gana = document.getElementById("ganador");
+                        if (caja0.textContent === crearJugadores[0].simbolo) {
+                            gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
+                        } else {
+                            gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
+                        }
+                    }
+                    return ganador();
+                } else if (caja2.textContent === caja4.textContent && caja4.textContent === caja6.textContent && caja2.textContent !== "") {
+                    juegoTerminado = true;
+                    [caja2, caja4, caja6].every(caja => caja.style.backgroundColor = "#00ADAB");
+                    [caja2, caja4, caja6].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
+                    const ganador = () => {
+                        mostrarGanador.showModal();
+                        const gana = document.getElementById("ganador");
+                        if (caja2.textContent === crearJugadores[0].simbolo) {
+                            gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
+                        } else {
+                            gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
+                        }
+                    }
+                    return ganador();
+                } else if ([caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.textContent !== "")) {
+                    [caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.style.backgroundColor = "#a3f111");
+                    [caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.style.boxShadow = "inset 5px 0px 148px 25px rgba(0,13,171,1)");
+                    const empate = () => {
+                        mostrarGanador.showModal();
+                        const gana = document.getElementById("ganador");
+                        gana.textContent = "Ha sido un empate";
+                    }
+                    return empate();
+                } else {
+                    return;
+                }
+            }
+
+            function eligeHumano() {
+
+                caja0.addEventListener("click", () => {
+                    if (caja0.textContent === "") {
+                        caja0.textContent = crearJugadores[0].simbolo;
+                        caja0.style.color = "rgb(252, 166, 6)";
+                        obtenerGanador();
                         eligeIA();
                     }
+                });
 
-                    function obtenerGanador() {
-                        const mostrarGanador = document.getElementById("mostrar_ganador");
-                        
-                        if (caja0.textContent === caja1.textContent && caja1.textContent === caja2.textContent && caja0.textContent !== "") {
-                            juegoTerminado = true;
-                            [caja0, caja1, caja2].every(caja => caja.style.backgroundColor = "#00ADAB");
-                            [caja0, caja1, caja2].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
-                            const ganador = () => {
-                                mostrarGanador.showModal();
-                                const gana = document.getElementById("ganador");
-                                if (caja0.textContent === crearJugadores[0].simbolo) {
-                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
-                                } else {
-                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
-                                }
-                            }
-                            return ganador();
-                        } else if (caja0.textContent === caja3.textContent && caja3.textContent === caja6.textContent && caja0.textContent !== "") {
-                            juegoTerminado = true;
-                            [caja0, caja3, caja6].every(caja => caja.style.backgroundColor = "#00ADAB");
-                            [caja0, caja3, caja6].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
-                            const ganador = () => {
-                                mostrarGanador.showModal();
-                                const gana = document.getElementById("ganador");
-                                if (caja0.textContent === crearJugadores[0].simbolo) {
-                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
-                                } else {
-                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
-                                }
-                            }
-                            return ganador();
-                        } else if (caja1.textContent === caja4.textContent && caja4.textContent === caja7.textContent && caja1.textContent !== "") {
-                            juegoTerminado = true;
-                            [caja1, caja4, caja7].every(caja => caja.style.backgroundColor = "#00ADAB");
-                            [caja1, caja4, caja7].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
-                            const ganador = () => {
-                                mostrarGanador.showModal();
-                                const gana = document.getElementById("ganador");
-                                if (caja1.textContent === crearJugadores[0].simbolo) {
-                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
-                                } else {
-                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
-                                }
-                            }
-                            return ganador();
-                        } else if (caja2.textContent === caja5.textContent && caja5.textContent === caja8.textContent && caja2.textContent !== "") {
-                            juegoTerminado = true;
-                            [caja2, caja5, caja8].every(caja => caja.style.backgroundColor = "#00ADAB");
-                            [caja2, caja5, caja8].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
-                            const ganador = () => {
-                                mostrarGanador.showModal();
-                                const gana = document.getElementById("ganador");
-                                if (caja2.textContent === crearJugadores[0].simbolo) {
-                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
-                                } else {
-                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
-                                }
-                            }
-                            return ganador();
-                        } else if (caja3.textContent === caja4.textContent && caja5.textContent === caja4.textContent && caja3.textContent !== "") {
-                            juegoTerminado = true;
-                            [caja3, caja4, caja5].every(caja => caja.style.backgroundColor = "#00ADAB");
-                            [caja3, caja4, caja5].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
-                            const ganador = () => {
-                                mostrarGanador.showModal();
-                                const gana = document.getElementById("ganador");
-                                if (caja3.textContent === crearJugadores[0].simbolo) {
-                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
-                                } else {
-                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
-                                }
-                            }
-                            return ganador();
-                        } else if (caja6.textContent === caja7.textContent && caja6.textContent === caja8.textContent && caja6.textContent !== "") {
-                            juegoTerminado = true;
-                            [caja6, caja7, caja8].every(caja => caja.style.backgroundColor = "#00ADAB");
-                            [caja6, caja7, caja8].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
-                            const ganador = () => {
-                                mostrarGanador.showModal();
-                                const gana = document.getElementById("ganador");
-                                if (caja6.textContent === crearJugadores[0].simbolo) {
-                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
-                                } else {
-                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
-                                }
-                            }
-                            return ganador();
-                        } else if (caja0.textContent === caja4.textContent && caja4.textContent === caja8.textContent && caja0.textContent !== "") {
-                            juegoTerminado = true;
-                            [caja0, caja4, caja8].every(caja => caja.style.backgroundColor = "#00ADAB");
-                            [caja0, caja4, caja8].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
-                            const ganador = () => {
-                                mostrarGanador.showModal();
-                                const gana = document.getElementById("ganador");
-                                if (caja0.textContent === crearJugadores[0].simbolo) {
-                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
-                                } else {
-                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
-                                }
-                            }
-                            return ganador();
-                        } else if (caja2.textContent === caja4.textContent && caja4.textContent === caja6.textContent && caja2.textContent !== "") {
-                            juegoTerminado = true;
-                            [caja2, caja4, caja6].every(caja => caja.style.backgroundColor = "#00ADAB");
-                            [caja2, caja4, caja6].every(caja => caja.style.boxShadow = "inset 11px -11px 59px 12px rgba(0,13,171,0.69)");
-                            const ganador = () => {
-                                mostrarGanador.showModal();
-                                const gana = document.getElementById("ganador");
-                                if (caja2.textContent === crearJugadores[0].simbolo) {
-                                    gana.textContent = `Ganó ${crearJugadores[0].nombre}`;
-                                } else {
-                                    gana.textContent = `Ganó la ${crearJugadores[1].nombre}`;
-                                }
-                            }
-                            return ganador();
-                        } else if ([caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.textContent !== "")) {
-                            [caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.style.backgroundColor = "#a3f111");
-                            [caja0, caja1, caja2, caja3, caja4, caja5, caja6, caja7, caja8].every(caja => caja.style.boxShadow = "inset 5px 0px 148px 25px rgba(0,13,171,1)");
-                            const empate = () => {
-                                mostrarGanador.showModal();
-                                const gana = document.getElementById("ganador");
-                                gana.textContent = "Ha sido un empate";
-                            }
-                            return empate();
-                        } else {
-                            return;
-                        }
+                caja1.addEventListener("click", () => {
+                    if (caja1.textContent === "") {
+                        caja1.textContent = crearJugadores[0].simbolo;
+                        caja1.style.color = "rgb(252, 166, 6)";
+                        obtenerGanador();
+                        eligeIA();
                     }
+                });
 
-                    function eligeHumano() {
-
-                        caja0.addEventListener("click", () => {
-                            if (caja0.textContent === "") {
-                                caja0.textContent = crearJugadores[0].simbolo;
-                                caja0.style.color = "rgb(252, 166, 6)";
-                                obtenerGanador();
-                                eligeIA();
-                            }
-                        });
-
-                        caja1.addEventListener("click", () => {
-                            if (caja1.textContent === "") {
-                                caja1.textContent = crearJugadores[0].simbolo;
-                                caja1.style.color = "rgb(252, 166, 6)";
-                                obtenerGanador();
-                                eligeIA();
-                            }
-                        });
-
-                        caja2.addEventListener("click", () => {
-                            if (caja2.textContent === "") {
-                                caja2.textContent = crearJugadores[0].simbolo;
-                                caja2.style.color = "rgb(252, 166, 6)";
-                                obtenerGanador();
-                                eligeIA();
-                            }
-                        });
-
-                        caja3.addEventListener("click", () => {
-                            if (caja3.textContent === "") {
-                                caja3.textContent = crearJugadores[0].simbolo;
-                                caja3.style.color = "rgb(252, 166, 6)";
-                                obtenerGanador();
-                                eligeIA();
-                            }
-                        });
-
-                        caja4.addEventListener("click", () => {
-                            if (caja4.textContent === "") {
-                                caja4.textContent = crearJugadores[0].simbolo;
-                                caja4.style.color = "rgb(252, 166, 6)";
-                                obtenerGanador();
-                                eligeIA();
-                            }
-                        });
-
-                        caja5.addEventListener("click", () => {
-                            if (caja5.textContent === "") {
-                                caja5.textContent = crearJugadores[0].simbolo;
-                                caja5.style.color = "rgb(252, 166, 6)";
-                                obtenerGanador();
-                                eligeIA();
-                            }
-                        });
-
-                        caja6.addEventListener("click", () => {
-                            if (caja6.textContent === "") {
-                                caja6.textContent = crearJugadores[0].simbolo;
-                                caja6.style.color = "rgb(252, 166, 6)";
-                                obtenerGanador();
-                                eligeIA();
-                            }
-                        });
-
-                        caja7.addEventListener("click", () => {
-                            if (caja7.textContent === "") {
-                                caja7.textContent = crearJugadores[0].simbolo;
-                                caja7.style.color = "rgb(252, 166, 6)";
-                                obtenerGanador();
-                                eligeIA();
-                            }
-                        });
-
-                        caja8.addEventListener("click", () => {
-                            if (caja8.textContent === "") {
-                                caja8.textContent = crearJugadores[0].simbolo;
-                                caja8.style.color = "rgb(252, 166, 6)";
-                                obtenerGanador();
-                                eligeIA();
-                            }
-                        });
-
-                        return moduloGameBoard.showBoard;
+                caja2.addEventListener("click", () => {
+                    if (caja2.textContent === "") {
+                        caja2.textContent = crearJugadores[0].simbolo;
+                        caja2.style.color = "rgb(252, 166, 6)";
+                        obtenerGanador();
+                        eligeIA();
                     }
+                });
 
-                    function eligeIA() {
-                        const tablero = [
-                            caja0.textContent, caja1.textContent, caja2.textContent,
-                            caja3.textContent, caja4.textContent, caja5.textContent,
-                            caja6.textContent, caja7.textContent, caja8.textContent
-                        ];
-
-                        // Función para verificar si alguien gana el juego
-                        function alguienGana(marcaActual) {
-                            if (
-                                (tablero[0] === tablero[1] && tablero[1] === tablero[2] && tablero[0] === marcaActual) ||
-                                (tablero[0] === tablero[3] && tablero[3] === tablero[6] && tablero[0] === marcaActual) ||
-                                (tablero[1] === tablero[4] && tablero[4] === tablero[7] && tablero[1] === marcaActual) ||
-                                (tablero[2] === tablero[5] && tablero[5] === tablero[8] && tablero[2] === marcaActual) ||
-                                (tablero[3] === tablero[4] && tablero[4] === tablero[5] && tablero[3] === marcaActual) ||
-                                (tablero[6] === tablero[7] && tablero[7] === tablero[8] && tablero[6] === marcaActual) ||
-                                (tablero[0] === tablero[4] && tablero[4] === tablero[8] && tablero[0] === marcaActual) ||
-                                (tablero[2] === tablero[4] && tablero[4] === tablero[6] && tablero[2] === marcaActual)
-                            ) {
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        }
-                    
-                        // Función para verificar si una casilla está vacía
-                        function casillaVacia(indice) {
-                            return tablero[indice] === "";
-                        }
-                        
-                        if(juegoTerminado){
-                            return;
-                        }
-                    
-                        // Buscar combinaciones ganadoras del humano y bloquearlas
-                        for (let i = 0; i < 9; i++) {
-                            if (casillaVacia(i)) {
-                                tablero[i] = crearJugadores[0].simbolo;
-                                if (alguienGana(crearJugadores[0].simbolo)) {
-                                    // Si el humano gana en esta casilla, bloquearla
-                                    const cajaElegida = document.getElementById(i.toString());
-                                    cajaElegida.textContent = crearJugadores[1].simbolo;
-                                    cajaElegida.style.color = "#FFF3EB";
-                                    tablero[i] = crearJugadores[1].simbolo;
-                                    obtenerGanador();
-                                    return;
-                                }
-                                tablero[i] = ""; // Deshacer el movimiento
-                            }
-                        }
-                    
-                        // Si no se puede bloquear una combinación ganadora, elegir una casilla aleatoria
-                        let casillasVacias = [];
-                        for (let i = 0; i < 9; i++) {
-                            if (casillaVacia(i)) {
-                                casillasVacias.push(i);
-                            }
-                        }
-                    
-                        if (casillasVacias.length > 0) {
-                            const indiceAleatorio = Math.floor(Math.random() * casillasVacias.length);
-                            const cajaElegida = document.getElementById(casillasVacias[indiceAleatorio].toString());
-                            cajaElegida.textContent = crearJugadores[1].simbolo;
-                            cajaElegida.style.color = "#FFF3EB";
-                            obtenerGanador();
-                        }
+                caja3.addEventListener("click", () => {
+                    if (caja3.textContent === "") {
+                        caja3.textContent = crearJugadores[0].simbolo;
+                        caja3.style.color = "rgb(252, 166, 6)";
+                        obtenerGanador();
+                        eligeIA();
                     }
-                                       
-                    eligeHumano();
+                });
+
+                caja4.addEventListener("click", () => {
+                    if (caja4.textContent === "") {
+                        caja4.textContent = crearJugadores[0].simbolo;
+                        caja4.style.color = "rgb(252, 166, 6)";
+                        obtenerGanador();
+                        eligeIA();
+                    }
+                });
+
+                caja5.addEventListener("click", () => {
+                    if (caja5.textContent === "") {
+                        caja5.textContent = crearJugadores[0].simbolo;
+                        caja5.style.color = "rgb(252, 166, 6)";
+                        obtenerGanador();
+                        eligeIA();
+                    }
+                });
+
+                caja6.addEventListener("click", () => {
+                    if (caja6.textContent === "") {
+                        caja6.textContent = crearJugadores[0].simbolo;
+                        caja6.style.color = "rgb(252, 166, 6)";
+                        obtenerGanador();
+                        eligeIA();
+                    }
+                });
+
+                caja7.addEventListener("click", () => {
+                    if (caja7.textContent === "") {
+                        caja7.textContent = crearJugadores[0].simbolo;
+                        caja7.style.color = "rgb(252, 166, 6)";
+                        obtenerGanador();
+                        eligeIA();
+                    }
+                });
+
+                caja8.addEventListener("click", () => {
+                    if (caja8.textContent === "") {
+                        caja8.textContent = crearJugadores[0].simbolo;
+                        caja8.style.color = "rgb(252, 166, 6)";
+                        obtenerGanador();
+                        eligeIA();
+                    }
                 });
 
                 return moduloGameBoard.showBoard;
-            })();
-            return { comenzarContraComputadora };
+            }
+
+            function eligeIA() {
+                const tablero = [
+                    caja0.textContent, caja1.textContent, caja2.textContent,
+                    caja3.textContent, caja4.textContent, caja5.textContent,
+                    caja6.textContent, caja7.textContent, caja8.textContent
+                ];
+
+                // Función para verificar si alguien gana el juego
+                function alguienGana(marcaActual) {
+                    if (
+                        (tablero[0] === tablero[1] && tablero[1] === tablero[2] && tablero[0] === marcaActual) ||
+                        (tablero[0] === tablero[3] && tablero[3] === tablero[6] && tablero[0] === marcaActual) ||
+                        (tablero[1] === tablero[4] && tablero[4] === tablero[7] && tablero[1] === marcaActual) ||
+                        (tablero[2] === tablero[5] && tablero[5] === tablero[8] && tablero[2] === marcaActual) ||
+                        (tablero[3] === tablero[4] && tablero[4] === tablero[5] && tablero[3] === marcaActual) ||
+                        (tablero[6] === tablero[7] && tablero[7] === tablero[8] && tablero[6] === marcaActual) ||
+                        (tablero[0] === tablero[4] && tablero[4] === tablero[8] && tablero[0] === marcaActual) ||
+                        (tablero[2] === tablero[4] && tablero[4] === tablero[6] && tablero[2] === marcaActual)
+                    ) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+                // Función para verificar si una casilla está vacía
+                function casillaVacia(indice) {
+                    return tablero[indice] === "";
+                }
+
+                if (juegoTerminado) {
+                    return;
+                }
+
+                // Buscar combinaciones ganadoras del humano y bloquearlas
+                for (let i = 0; i < 9; i++) {
+                    if (casillaVacia(i)) {
+                        tablero[i] = crearJugadores[0].simbolo;
+                        if (alguienGana(crearJugadores[0].simbolo)) {
+                            // Si el humano gana en esta casilla, bloquearla
+                            const cajaElegida = document.getElementById(i.toString());
+                            cajaElegida.textContent = crearJugadores[1].simbolo;
+                            cajaElegida.style.color = "#FFF3EB";
+                            tablero[i] = crearJugadores[1].simbolo;
+                            obtenerGanador();
+                            return;
+                        }
+                        tablero[i] = ""; // Deshacer el movimiento
+                    }
+                }
+
+                // Si no se puede bloquear una combinación ganadora, elegir una casilla aleatoria
+                let casillasVacias = [];
+                for (let i = 0; i < 9; i++) {
+                    if (casillaVacia(i)) {
+                        casillasVacias.push(i);
+                    }
+                }
+
+                if (casillasVacias.length > 0) {
+                    const indiceAleatorio = Math.floor(Math.random() * casillasVacias.length);
+                    const cajaElegida = document.getElementById(casillasVacias[indiceAleatorio].toString());
+                    cajaElegida.textContent = crearJugadores[1].simbolo;
+                    cajaElegida.style.color = "#FFF3EB";
+                    obtenerGanador();
+                }
+            }
+
+            eligeHumano();
+
         };
 
-        return { mostrarFormulario };
+        return { mostrarFormulario, comenzarContraComputadora };
     })();
 
     return { crearJugadores, moduloGameBoard, displayController };
@@ -403,4 +439,5 @@ const moduloDeJuego = (() => {
 
 
 const nuevoTablero = moduloDeJuego.moduloGameBoard.showBoard();
-const jugar = moduloDeJuego.displayController.mostrarFormulario();
+const formulario = moduloDeJuego.displayController.mostrarFormulario();
+const jugar = moduloDeJuego.displayController.comenzarContraComputadora();
