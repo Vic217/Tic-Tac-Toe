@@ -246,3 +246,122 @@ img {
     color: #fca606;   
     cursor: pointer;
 }
+
+/* Estilo para pantallas menores de 1030px de ancho y mayores de 880px*/
+@media only screen and (width < 1030px){
+    body {
+        height: 100vh;
+        display: grid;
+        justify-items: center;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    #tablero {
+        height: 300px;
+        min-height: min-content;
+        width: 380px;
+        min-width: min-content;
+    }
+    
+    .caja {
+        width: 100%;
+        height: 100%;
+        font-size: 54px;
+        font-weight: 400;
+    }
+
+    #primer_jugador {
+        margin: 20px;
+        font-size: 20px;
+    }
+    
+    #segundo_jugador {
+        margin: 20px;
+        font-size: 20px;
+    }
+
+    footer {
+        margin-top: 10px;
+    }
+    
+}
+
+/* Estilo para pantallas menores de 880px de ancho y mayores de 700px */
+@media only screen and (width < 880px){
+    body {
+        height: 100vh;
+        display: grid;
+        justify-items: center;
+    }
+
+    #espacio_de_juego {
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-items: baseline;
+    }
+
+    #tablero {
+        height: 210px;
+        min-height: min-content;
+        width: 280px;
+        min-width: min-content;
+    }
+    
+    .caja {
+        width: 100%;
+        height: 100%;
+        font-size: 38px;
+        font-weight: 400;
+    }
+
+    #primer_jugador {
+        margin: 20px;
+        font-size: 18px;
+    }
+    
+    #segundo_jugador {
+        margin: 20px;
+        font-size: 18px;
+    }
+    
+}
+
+/* Estilo para pantallas menores de 700px de ancho */
+@media only screen and (width < 700px){
+    body {
+        height: 100vh;
+        display: grid;
+        justify-items: center;
+    }
+    
+    h1 {
+        margin: 2px;
+    }
+
+    #espacio_de_juego {
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-items: baseline;
+    }
+
+    #primer_jugador {
+        margin: 20px;
+        font-size: 18px;
+    }
+    
+    #segundo_jugador {
+        margin: 20px;
+        font-size: 18px;
+    }
+    
+    footer {
+        margin: 2px;
+    }
+}
