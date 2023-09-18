@@ -83,10 +83,14 @@ const moduloDeJuego = (() => {
 
             _x.addEventListener("click", () => {
                 crearJugadores[0] = { nombre: _nombre_jugador.value, simbolo: _x.value };
+                _x.classList.add("activado");
+                _o.classList.remove("activado")
             });
 
             _o.addEventListener("click", () => {
                 crearJugadores[0] = { nombre: _nombre_jugador.value, simbolo: _o.value };
+                _o.classList.add("activado");
+                _x.classList.remove("activado")
             });
         }
 
@@ -100,6 +104,9 @@ const moduloDeJuego = (() => {
                     caja.style.boxShadow = "none";
                     caja.textContent = "";
                 });
+                _o.classList.remove("activado");
+                _x.classList.remove("activado");
+                _nombre_jugador.textContent = "";
 
                 mostrarFormulario();
                 juegoTerminado = false;
@@ -129,10 +136,10 @@ const moduloDeJuego = (() => {
             });
 
             jugarIA.addEventListener("click", (e) => {
-                primerJugador.textContent = crearJugadores[0].nombre + "   " + crearJugadores[0].simbolo;
+                primerJugador.textContent = crearJugadores[0].nombre + " ==> " + crearJugadores[0].simbolo;
                 const simboloIA = crearJugadores[0].simbolo === "O" ? "X" : "O";
-                segundoJugador.textContent = "IA" + "   " + simboloIA;
-                crearJugadores[1] = { nombre: "IA", simbolo: simboloIA };
+                segundoJugador.textContent = "Computadora" + " ==> " + simboloIA;
+                crearJugadores[1] = { nombre: "Computadora", simbolo: simboloIA };
 
                 if (crearJugadores[0].simbolo === "X") {
                     eligeHumano();
